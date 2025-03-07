@@ -1,40 +1,503 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>STEMgraph emBO++ Talk 2025</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    <style>
+        .split-container {
+            display: flex;
+            align-items: center;
+        }
+        .text-content {
+            width: 50%;
+            padding-right: 20px;
+        }
+		.image-content {
+            width: 50%;
+            position: relative;
+        }
+        .image-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+        }
+        .image-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%);
+            pointer-events: none;
+		}
+		.slide-background-stupid {
+            background: url('./assets/stupid_stephan.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        .slide-background-stupid::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+        }
+		.slide-content-stupid {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 20px;
+        }
+		:root {
+            --mermaid-theme: dark;
+            --mermaid-edge-stroke: white;
+        }
+		.asciinema-container {
+            text-align: center;
+        }
+		.video-slide .text-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+		.image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .image-container img {
+            width: 30%;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <section>
+                <section><h1>STEMgraph - Graph Based Curriula</h1>
+					<p>emBO++ 2025 - Bochum</p>
+					<p>@MaxClerkwell</p>
+				</section>
+				<section>
+                    <div class="split-container">
+                        <div class="text-content">
+                            <h2>STEMgraphs Motivation</h2>
+                            <p>A modern way of generating user-centric learning experiences</p>
+                            <p>Ideas, Intentions and Implementations</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="./assets/graph.webp" alt="Graph Example">
+                        </div>
+                    </div>
+                </section>
+                <section data-background="./assets/stupid_stephan.jpg"
+				data-background-opacity="0.4"><h3>What I have been doing so far</h3>
+					<p>Teaching since 2016</p>
+					<p>My first own lecture in 2019</p>
+					<p>More than 300 students so far</p>				
+				</section>
+                <section><h3>What I realized</h3>
+					<p>Previous Knowledge is very diverse</p>
+					<p>There are two differnt approaches to teaching</p>
+					<p>"Straightforward" or "Motivated"</p>
+				</section>
+				<section> <!-- Straightforward Teaching-->
+					<pre class="mermaid">
+					flowchart LR
+						A1["Skill to Learn"]:::green0
+						B1["Dependency 1"] --> C1
+						C1["Dependency 2"] --> G1
+						G1["Dependency 3"] --> A1
+						classDef green0 fill:#ff5733,stroke:#000,color:#fff; 
+					</pre>
+				</section>
+				<section> <!-- what it actually looks like-->
+					<pre class="mermaid">
+					flowchart TD
+						A2["Skill to Learn"]
+						B2["Dependency 1"] --> A2
+						C2["Dependency 2"] --> A2
+						D2["Dependency 1.1"] --> B2
+						E2["Dependency 1.2"] --> B2
+						F2["Dependency 2.1"] --> C2
+						G2["Dependency 3"] --> A2
+					</pre>
+				</section>	
+				<section> <!-- Motivated / what some teachers like to do-->
+					<pre class="mermaid">
+					flowchart TD
+						A3["Skill to Learn"]:::highlight1
+						B3["Dependency 1"]:::both1 --> A3
+						C3["Dependency 2"]:::both1 --> A3
+						D3["Dependency 1.1"] --> B3
+						E3["Dependency 1.2"] --> B3
+						F3["Dependency 2.1"] --> C3
+						G3["Dependency 3"]:::both1 --> A3
+						classDef highlight1 fill:#ff33cc,stroke:#000,color:#fff;
+						classDef both1 fill:#ff5733,stroke:#000,color:#fff;
+					</pre>
+				</section>	
+				<section>
+					<pre class="mermaid">
+					flowchart TD
+						A4["Skill to Learn"]
+						B4["Dependency 1"] --> A4
+						C4["Dependency 2"] --> A4
+						D4["Dependency 1.1"]:::highlight2 --> B4
+						E4["Dependency 1.2"] --> B4
+						F4["Dependency 2.1"]:::highlight2 --> C4
+						G4["Dependency 3"] --> A4
+						classDef highlight2 fill:#ff33cc,stroke:#000,color:#fff;
+					</pre>
+				</section>
+				<section>
+					<pre class="mermaid">
+					flowchart TD
+						A5["Skill to Learn"]
+						B5["Dependency 1"] --> A5
+						C5["Dependency 2"] --> A5
+						D5["Dependency 1.1"]:::highlight3 --> B5
+						E5["Dependency 1.2"] --> B5
+						F5["Dependency 2.1"]:::both3 --> C5
+						G5["Dependency 3"] --> A5
+						classDef highlight3 fill:#ff33cc,stroke:#000,color:#fff;
+						classDef both3 fill:#ff5733,stroke:#000,color:#fff;
+					</pre>
+				</section>
+				<section>
+					<pre class="mermaid">
+					flowchart TD
+						A6["Skill to Learn"]
+						B6["Dependency 1"] --> A6
+						C6["Dependency 2"] --> A6
+						D6["Dependency 1.1"]:::highlight4 --> B6
+						E6["Dependency 1.2"]:::highlight24 --> B6
+						F6["Dependency 2.1"]:::both4 --> C6
+						G6["Dependency 3"]:::highlight24 --> A6
+						classDef highlight4 fill:#ff33cc,stroke:#000,color:#fff;
+						classDef highlight24 fill:#ffcc00,stroke:#000,color:#000;
+						classDef both4 fill:#ff5733,stroke:#000,color:#fff; 
+					</pre>
+				</section>
+				<section>
+					<h2>What we have</h2>
+					<pre class="mermaid">
+					flowchart TD
+						A6["Skill to Learn"]
+						B6["Dependency 1"] --> A6
+						C6["Dependency 2"] --> A6
+						D6["Dependency 1.1"]:::highlight4 --> B6
+						E6["Dependency 1.2"]:::highlight24 --> B6
+						F6["Dependency 2.1"]:::both4 --> C6
+						G6["Dependency 3"]:::highlight24 --> A6
+						classDef highlight4 fill:#ff33cc,stroke:#000,color:#fff;
+						classDef highlight24 fill:#ffcc00,stroke:#000,color:#000;
+						classDef both4 fill:#ff5733,stroke:#000,color:#fff; 
+					</pre>
+				</section>
+				<section>
+					<h2>What we want to have</h2>
+					<pre class="mermaid">
+					flowchart LR
+					A7["Skill to Learn"]:::green
+					B7["Dependency 1"]:::green --> F7
+					C7["Dependency 2"]:::green --> G7
+					D7["Dependency 1.1"]:::green --> E7
+						E7["Dependency 1.2"]:::green --> B7
+						F7["Dependency 2.1"]:::green --> C7
+						G7["Dependency 3"]:::green --> A7
+						classDef green fill:#ff5733,stroke:#000,color:#fff; 
+					</pre>
+				</section>
+            </section>
 
-		<title>reveal.js</title>
+            <section>
+				<section><h2>STEMgraphs Model</h2>
+					<p>I'm a physicist, of course I want to build a model</p>
+					<p>So let me explain my model</p>
+				</section>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+				<section><h3>What I disagree with</h3>
+					<blockquote>
+						"You sometimes have to run before you learn to walk"
+						<br>— Some Teachers
+					</blockquote>
+				</section>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+				<section><h3>What I see as my job</h3>
+					<p>make efficient use of the students limited time</p>
+					<p>make them productive</p>
+					<p>make them competent</p>
+					<p>make them able to help themself</p>
+					<p>Students and Employees are paying with their time</p>
+				</section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+				<section><h3>What I see as a journey</h3>
+					<p>Everybody starts at a different point</p>
+					<p>But I want comparable outcomes</p>
+				</section>
+			
+				<section>
+					<div class="split-container">
+						<div class="text-content">
+							<h2>What I heard from a co-worker</h2>
+							<p>Just play THPS</p>
+							<p>Everyone has differnet stats</p>
+							<p>Reaching 100% with different characters require different paths</p>
+						</div>
+						<div class="image-content">
+							<img src="./assets/tony.jpg" alt="THPS">
+						</div>
+					</div>
+				</section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+                <section><h3>What I mean when I say learning</h3>
+					<p>Learning is an active process</p>
+					<p>It describes a trajectory</p>
+					<p>The substrate is the skillspace</p>
+					<p>There are limited valid transitions</p>
+					<p>Thus forming distinct skilltrees</p>
+				</section>
+
+				<section>
+                    <div class="split-container">
+                        <div class="text-content">
+                            <h2>What I mean by Skilltree</h2>
+								<p>I wanted to become a Master Shape Shifter</p>
+								<p>Not really, but in an RPG</p>
+								<p>There were certain steps to take</p>
+								<p>I didn't know which ones</p>
+								<p>Googled and found a skilltree</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="./assets/ShapeShiftingSkills.webp" alt="Skilltree Example">
+                        </div>
+                    </div>
+                </section>
+
+				<section><h3>What I want others to see</h3>
+					<p>Think of any given task in your job</p>
+					<p>Can you write it down in atomic steps</p>
+					<p>Doesn't every step have a pre-requisite</p>
+					<p>Sort of a dependency upon a different atomic step</p>
+					<p>The ability to perform these steps is competence</p>
+					<p>I tried generating a list of these atomic steps</p>
+					<p>Ran out of paper</p>
+				</section>
+            </section>
+            
+            	
+
+			
+            <section>
+                <section><h2>STEMgraphs State of Affairs</h2>
+					<p>I started a few weeks ago</p>
+					<p>Why would I write them on paper</p>
+					<p>How do I store them</p>
+				</section>
+				
+                <section class="video-slide" 
+				data-background-video="./assets/final.mp4"
+				data-background-video-loop
+				data-background-video-muted>
+					<!-- neo4j Screencap -->
+					<p class="fragment text-box">It's a graph</p>
+					<p class="fragment text-box">Use a graph database</p>
+					<p class="fragment text-box">Neo4j</p>
+					<p class="fragment text-box">arrange relationships of skills</p>
+					<p class="fragment text-box">Nodes - atomic challenges</p>
+					<p class="fragment text-box">Edges - dependencies</p>
+					<p class="fragment text-box">Subgraphs can be disjuncted</p>
+					<p class="fragment text-box">Will get joined later</p>
+				</section>
+
+				<section>
+                    <div class="split-container">
+                        <div class="text-content">
+                            <h2>What I use to store the challenges</h2>
+							<p>I screw up a lot of times</p>
+							<p>Storing in the DB isn't convenient</p>
+							<p>Storing it in Git makes perfect sense</p>
+							<p>Collaboration, Issues, Pull Requests, History, etc</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="./assets/collab.webp" alt="Collaboration">
+                        </div>
+                    </div>
+                </section>
+
+				<section> <!-- New Challenge -->
+					<script src="https://asciinema.org//a/IayShBBQq1wDhPUvrIYRi3YWN.js" 
+							id="asciicast-IayShBBQq1wDhPUvrIYRi3YWN"
+							data-autoplay="true" data-loop="true"
+							>
+					</script>
+				</section>
+				<section> <!-- online API -->
+					<script src="https://asciinema.org//a/x0iscedb5ul4OzIw4EuiPEHyw.js" 
+							id="asciicast-x0iscedb5ul4OzIw4EuiPEHyw" 
+							async="true"
+							data-autoplay="true" data-loop="true"
+							>
+					</script>
+				</section>
+
+				<section data-background-color="lightgrey"> <!-- API DEMO -->
+					<div class="iframe-container">
+						<iframe src="https://stemgraph-online-api.boekelmann.net/docs" frameborder="0" width="100%" height="800px" ></iframe>
+					</div>
+				</section>
+				
+                <section><h3>What I use to display the challenges</h3>
+					<p>Neo4j comes with a browser</p>
+					<p>It's not easy to use without knowing the cypher</p>
+					<p>Build a custom UI</p>
+					<p>What if I want to change something in the DB structure</p>
+					<p>Write a Use-Case-Driven API</p>
+					<p>Implement API in FastAPI</p>
+				</section>
+				<section>
+					<div class="iframe-container">
+						<iframe src="https://stemgraph.github.io/index.html" frameborder="0" width="100%" height="800px" ></iframe>
+					</div>
+				</section>
+				<section>
+					<div class="image-container">
+						<img src="./assets/index.png" alt="HTML">
+						<img src="./assets/readme.png" alt="Markdown">
+						<img src="./assets/latex.png" alt="LaTeX">
+					</div>
+				</section>
+                <section><h3>What I use to access the challenges</h3>
+					<p>Differnet people like reading different formats</p>
+					<p>I don't want to prepare all formats by hand</p>
+					<p>Started to write a DSL in LaTeX - didn't work too well</p>
+					<p>Switched to defining a JSON Schema</p>
+				</section>
+				
+                <section><h3>What I use to generate these documents</h3>
+					<p>A tag is created for each release</p>
+					<p>Parser & Generator written in Python & running in Github Actions</p>
+					<p><code>HTML</code> is served by Github-Pages</p>
+					<p><code>.md</code> is served by Github README</p>
+					<p><code>.pdf</code> is served by Github Release artifacts</p>
+				</section>
+			</section>
+            
+            <section>
+                <section><h2>STEMgraphs Future</h2>
+					<p>This isn't nearly what I intended to do at the beginning</p>
+					<p>I just wanted to upgrade my course a little</p>
+					<p>Now I started a complete new side-project</p>
+				</section>
+
+				<section>
+					<img src="./assets/STEMgraph_now.drawio.png" style="width: 90%; height: auto;">
+				</section>
+				
+                <section><h3>What I want the UX to look like</h3>
+					<p>I want teachers to generate a subgraph</p>
+					<p>I want students to track their progress</p>
+					<p>I want contributors to easily make suggestions</p>
+				</section>
+				<section><h3>What I want to implement next</h3>
+					<p>All functionalities shall be porcelain API calls</p>
+					<p>Plumbing shall be done in FastAPI</p>
+					<p>Integrate Keycloak Attributes</p>
+					<p>Initial Assesment</p>
+				</section>
+
+				<section>
+					<img src="./assets/STEMgraph_future.drawio.png" style="width: 90%; height: auto;">
+				</section>
+
+            </section>
+            
+            <section>
+                <section>
+					<img src="./assets/I_want_you.jpg" style="width: auto; height: 600px;">
+				</section>
+				<section><h2>What I'd love to see</h2>
+					<p>use STEMgraph for their your onboarding</p>
+					<p>tell me about your usage</p>
+					<p>create issues on existing challenges</p>
+					<p>Check out my repository and start discussions</p>
+					<p class="fragment text-box">Let me fix my release first</p>
+				</section>
+				<section>
+                    <div class="split-container">
+                        <div class="text-content">
+                            <h2>What I'd love to see</h2>
+					<p>use STEMgraph for their your onboarding</p>
+					<p>tell me about your usage</p>
+					<p>create issues on existing challenges</p>
+					<p>Check out my repository and start discussions</p>
+					<p class="fragment text-box">Let me fix my release first</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="./assets/I_want_you.jpg" alt="You">
+                        </div>
+                    </div>
+                </section>
+				<section>
+                    <div class="split-container">
+                        <div class="text-content">
+                            <h1>Reach out</h1>
+					<p>X.com - @MaxClerkwell</p>
+					<p>sboekelmann@ep1.rub.de</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="./assets/avatar.jpg" alt="Me">
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+        </div>
+    </div>
+
+    <script>
+		mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+				edgeStroke: 'white'
+            }
+        });
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+    </script>
+	<script>
+		window.onload = function() {
+			AsciinemaPlayer.create("./assets/demo.cast", document.getElementById("asciinema-player"), {
+				autoplay: true,
+				loop: true
 			});
-		</script>
-	</body>
+		};
+	 </script>
+	 
+</body>
 </html>
